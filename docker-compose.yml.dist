@@ -1,0 +1,26 @@
+version:  '3.9'
+
+services:
+    php:
+        build:
+            context: docker/php
+            dockerfile: Dockerfile
+            network: host
+            args:
+                ENV: dev # change according to your needs
+                TIMEZONE: Europe/Warsaw # change according to your needs
+        container_name: 'app.php'
+        restart: on-failure
+        env_file:
+            - docker/php/.env.web.dev # change according to your needs
+        volumes:
+            - './app/:/var/www/app:cached'
+        networks:
+            - app_network
+
+networks:
+    app_network:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.16.57.0/24

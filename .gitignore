@@ -1,0 +1,18 @@
+/.idea
+
+###
+docker-compose.yml
+
+###
+
+app/bin/.phpunit
+app/vendor
+
+app/.phpunit
+app/.phpunit.result.cache
+app/phpunit.xml
+
+###> squizlabs/php_codesniffer ###
+app/.phpcs-cache
+app/phpcs.xml
+###< squizlabs/php_codesniffer ###
