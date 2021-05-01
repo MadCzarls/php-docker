@@ -1,20 +1,15 @@
-# TODO
+# [WIP]
 
 # Description
 
-Symfony 5 project template running on Docker (utilizing docker-compose) with PHP 8.0 + nginx 1.19 + MySQL 8.0. By default includes xdebug extension and PHP_CodeSniffer for easy development and basic configuration for opcache for production. Includes instruction for setting it in PhpStorm. Also have Blackfire tool integrated [WIP]. 
+Template project for PHP with Docker with basic composer setup. By default includes xdebug extension and PHP_CodeSniffer for easy development. Includes instruction for setting it in PhpStorm. 
 
-- https://symfony.com/
 - https://www.docker.com/
 - https://docs.docker.com/compose/
 - https://www.php.net/
-- https://www.nginx.com/
-- https://www.mysql.com/
 - https://xdebug.org/
 - https://github.com/squizlabs/PHP_CodeSniffer
-- https://www.php.net/manual/en/intro.opcache.php
 - https://www.jetbrains.com/phpstorm/
-- https://blackfire.io
 
 Clone and tweak it to your needs. Tested on Linux (Ubuntu):
 
@@ -28,8 +23,6 @@ and Windows 10:
 1. Go to `Settings` -> `Docker Engine` and set `experimental mode` to `true`.
 
 # TODO
-
-1. scripts - move container name to ENV and use it in scripts;
 1. change based distros (eg. Ubuntu) for something more lightweight.
 
 # Usage
@@ -75,27 +68,8 @@ Open directory including cloned repository as directory in PhpStorm.
 1. `Settings` -> `Languages & Frameworks` -> `PHP` -> `Quality Tools` -> `PHP_CodeSniffer` -> `Configuration`: three dots, add interpreter with `+` and validate paths. By default, there should be correct path mappings and paths already set to `/var/www/app/vendor/bin/phpcs` and `/var/www/app/vendor/bin/phpcbf`.
 1. `Settings` -> `Editor` -> `Inspections` -> `PHP` -> `Quality tools` -> tick `PHP_CodeSniffer validation` -> tick `Show sniff name` -> set coding standard to `Custom` -> three dots and type `/var/www/app/phpcs.xml` (path in container).
 
-### MySQL
-
-Open `Database` section on the right bar of IDE -> `Data Source` -> `MySQL` -> set host to `localhost`, port to `33306`, user to `app_user`, pass `app_pass` (defaults from docker-compose.yml.dist).
-
 ### PHPUnit
 
 1. Copy `phpunit.xml.dist` into `phpunit.xml`.
 1. Login into `mint_2.php` container and run `./bin/phpunit`.
 1. `Settings` -> `Languages & Frameworks` -> `PHP` -> `Test frameworks`. Click `+` and `PHPUnit by Remote Intepreter` -> pick interpreter. In `PHPUnit library` tick `Path to phpunit.phar` and type `bin/phpunit`. Click refresh icon. In `Test runner` section set `Default configuration file` to `phpunit.xml` and `Default bootstrap file` to `tests/bootstrap.php`.
-
-# Disclaimer
-
-Although there are present different files for `prod` and `dev` environments these are only stubs and this repo is not suitable to run on `prod` environment. The idea was to create as much integral, self-contained and flexible environment for `development` as possible and these files are here merely to easily mimic `prod` env and point out differences in configuration.
-
-# Blackfire [WIP]
-After starting containers blackfire-agent service is not started in main app.php container. In that case run:
-1. `docker exec -it app.php bash`
-1. `/etc/init.d/blackfire-agent restart`
-
-@TODO debug ^.
-
-Remember to install extension for Blackfire to your browser of choice.
-
-Test Blackfire integration, `prod` including; add flag to control Blackfire installation?
