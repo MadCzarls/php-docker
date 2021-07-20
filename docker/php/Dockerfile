@@ -1,7 +1,7 @@
 ARG ENV
 ARG TIMEZONE
 
-FROM php:7.4.16-fpm-buster
+FROM php:7.4.21-fpm-buster
 RUN apt-get update
 RUN apt-get install -y \
     apt-utils \
@@ -15,7 +15,7 @@ RUN docker-php-ext-install \
 ARG ENV
 
 RUN if [ "$ENV" = "dev" ] ; then \
-        pecl install xdebug-3.0.2 && \
+        pecl install xdebug-3.0.4 && \
         docker-php-ext-enable xdebug  \
     ; fi
 
