@@ -1,6 +1,6 @@
 # Description
 
-Template project for PHP with Docker with basic composer setup. By default includes xdebug extension and PHP_CodeSniffer for easy development. Includes instruction for setting it in PhpStorm. 
+Template project for PHP with Docker with basic composer setup. By default, includes xdebug extension and PHP_CodeSniffer for easy development. Includes instruction for setting it in PhpStorm. 
 
 - https://www.docker.com/
 - https://docs.docker.com/compose/
@@ -11,34 +11,23 @@ Template project for PHP with Docker with basic composer setup. By default inclu
 
 Clone and tweak it to your needs. Tested on Linux (Ubuntu):
 
-1. Docker version 20.10.7, build f0df350
+1. Docker version 20.10.8, build 3967b7d
 1. docker-compose version 1.29.2, build 5becea4c
-
-and Windows 10:
-
-1. Use `Docker for Windows`, at least version `3.2.1`.
-1. Switch to `Linux containers`.
-1. Go to `Settings` -> `Docker Engine` and set `experimental mode` to `true`.
-
-# TODO
-1. change based distros (eg. Ubuntu) for something more lightweight.
 
 # Usage
 
-Clone repository, `cd` inside, create `docker-compose.yml` based on `docker-compose.yml.dist` with `cp docker-compose.yml.dist docker-compose.yml` command. If needed, change configuration according to the comments inside. Then define your `APP_SECRET` in the correct file based on your ENV (`docker/php/.env.app.[dev/prod]`) and run afterwards:
+Clone repository, `cd` inside, take a look at `docker-compose.yml` file, change it according if needed. Afterwards run:
 
 <pre>
 docker-compose build
 docker-compose up
 </pre>
 
-After that log into container with `docker exec -it app.php bash`, where `app.php` is the default container name from `docker-compose.yml.dist`. Then run:
-
+After that log into container with `docker exec -it php_docker bash`, where `php.docker` is the default container name from `docker-compose.yml` file.
+To execute script type:
 <pre>
-composer install
+php src/run.php
 </pre>
-
-From this point forward, application should be available under `http://localhost:8050/`.
 
 # Overview
 
@@ -52,8 +41,8 @@ Open directory including cloned repository as directory in PhpStorm.
 
 ### Interpreter
 
-1. `Settings` -> `PHP` -> `Servers`: create server with name `docker` (the same as in ENV variable `PHP_IDE_CONFIG`), host `localhost`, port `8050` (default from `docker-compose.yml.dist`).
-1. Tick `Use path mappings` -> set `File/Directory` <-> `Absolute path on the server` as: `</absolute/path>/symfony-docker/app` <-> `/var/www/app` (default from docker-compose.yml.dist).
+1. `Settings` -> `PHP` -> `Servers`: create server with name `docker` (the same as in ENV variable `PHP_IDE_CONFIG`), host `localhost`, port `8050` (default from `docker-compose.yml` file).
+1. Tick `Use path mappings` -> set `File/Directory` <-> `Absolute path on the server` as: `</absolute/path>/php_docker_cli/app` <-> `/var/www/app` (default from `docker-compose.yml`).
 1. `Settings` -> `PHP`: three dots next to the field `CLI interpreter` -> `+` button -> `From Docker, Vagrant(...)` -> from `docker-compose`, from service `php`, server `Docker`, configuration files `./docker-compose`. After creating in `Lifecycle` section ensure to pick `Always start a new container (...)`, in `General` refresh interpreter data.
 
 ### xdebug
