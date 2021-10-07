@@ -23,7 +23,7 @@ docker-compose build
 docker-compose up
 </pre>
 
-After that log into container with `docker exec -it php_docker bash`, where `php.docker` is the default container name from `docker-compose.yml` file.
+After that log into container with `docker exec -it php.docker bash`, where `php.docker` is the default container name from `docker-compose.yml` file.
 To execute script type:
 <pre>
 php src/run.php
