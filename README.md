@@ -28,7 +28,7 @@ docker-compose up
 </pre>
 
 After that log into container with `docker exec -it php.docker bash`, where `php.docker` is the default container name from `docker-compose.yml` file.
-File `src/run.php` acts as entry file, to use it run command:
+File `app/src/run.php` acts as entry file, to use it run command:
 <pre>
 php src/run.php
 </pre>
