@@ -1,6 +1,6 @@
 {
     "name": "madczarls/php-docker",
-    "description": "PHP in Docker base project",
+    "description": "PHP in Docker template project",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "dev",

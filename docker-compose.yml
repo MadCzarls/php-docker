@@ -15,3 +15,11 @@ services:
             - docker/php/.env
         volumes:
             - './app/:/var/www/app:cached'
+
+
+networks:
+    app_network:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.88.57.0/24

@@ -16,7 +16,11 @@ Clone and tweak it to your needs. Tested on Linux (Ubuntu):
 
 # Usage
 
-Clone repository, `cd` inside, take a look at `docker-compose.yml` file, change it according if needed. Afterwards run:
+Clone repository, `cd` inside, take a look at `docker-compose.yml` file, change it according if needed.
+Then go to directory `docker/php` and create `.env` file based of `.env.dist` template.
+As a last step, take a look `docker/php/config/docker-php-memlimit.ini` - you can change memory limit for PHP if needed.
+
+Afterwards run:
 
 <pre>
 docker-compose build
@@ -24,7 +28,7 @@ docker-compose up
 </pre>
 
 After that log into container with `docker exec -it php.docker bash`, where `php.docker` is the default container name from `docker-compose.yml` file.
-To execute script type:
+File `src/run.php` acts as entry file, to use it run command:
 <pre>
 php src/run.php
 </pre>
